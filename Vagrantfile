@@ -39,11 +39,12 @@ ff02::2 ip6-allrouters
 EOF
 SCRIPT
 
+box = "bento/ubuntu-14.04"
+
 Vagrant.configure("2") do |config|
 
   # Define base image
-  config.vm.box = "precise64"
-  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.vm.box = box
 
   # Manage /etc/hosts on host and VMs
   config.hostmanager.enabled = false
@@ -64,7 +65,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define :slave1 do |slave1|
-    slave1.vm.box = "precise64"
+    slave1.vm.box = box
     slave1.vm.provider :virtualbox do |v|
       v.name = "vm-cluster-node2"
       v.customize ["modifyvm", :id, "--memory", "2048"]
@@ -76,7 +77,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define :slave2 do |slave2|
-    slave2.vm.box = "precise64"
+    slave2.vm.box = box
     slave2.vm.provider :virtualbox do |v|
       v.name = "vm-cluster-node3"
       v.customize ["modifyvm", :id, "--memory", "2048"]
@@ -88,7 +89,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define :slave3 do |slave3|
-    slave3.vm.box = "precise64"
+    slave3.vm.box = box
     slave3.vm.provider :virtualbox do |v|
       v.name = "vm-cluster-node4"
       v.customize ["modifyvm", :id, "--memory", "2048"]
