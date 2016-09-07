@@ -45,6 +45,7 @@ Vagrant.configure("2") do |config|
 
   # Define base image
   config.vm.box = box
+  config.vm.box_url = "https://atlas.hashicorp.com/bento/ubuntu-14.04"
 
   # Manage /etc/hosts on host and VMs
   config.hostmanager.enabled = false
